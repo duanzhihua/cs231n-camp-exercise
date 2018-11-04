@@ -1,0 +1,259 @@
+
+
+#############################################
+分支操作
+https://blog.csdn.net/u014330763/article/details/80026238
+##############################################
+git branch 查看分支
+$ git branch dev  创新新的分支
+git checkout  dev  切换到分支
+git push -u origin  dev
+删除分支：
+git branch -d dev 删除本地分支 
+git push origin --delete dev 删除远程分支 
+
+git branch develop 新分支
+git checkout develop  切换分支
+#############################################
+分支整体提交：
+#############################################
+git push -u origin  develop:develop 提交远程分支
+
+
+#############################################
+master部分分支文件合，并提交：
+#############################################
+部分文件合并分支：
+首先切换到 分支 , git checkout develop
+
+1，分支提交文件
+git add  assignment/assignment1/cs231n/layers.py
+git commit -m "branch develop commit"
+
+2，切换到master
+ git checkout master
+3，合并文件 指定文件路径
+ git checkout develop  assignment/assignment1/cs231n/layers.py
+
+4，提交到本地
+git commit -m "branch develop to github"
+
+5，远程github 提交远程
+ git push -u origin master
+
+
+
+
+
+
+ lenovo@duanzhihua MINGW64 ~
+$ pwd
+/c/Users/lenovo
+
+lenovo@duanzhihua MINGW64 ~
+$ cd /d/PycharmProjects/gitCs231_2018/
+
+lenovo@duanzhihua MINGW64 /d/PycharmProjects/gitCs231_2018 (master)
+$ pwd
+/d/PycharmProjects/gitCs231_2018
+
+
+
+lenovo@duanzhihua MINGW64 /d/PycharmProjects/gitCs231_2018 (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   readme.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        Knn.py
+        cs231n/__pycache__/
+        cs231n/classifiers/
+        cs231n/data_utils.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+lenovo@duanzhihua MINGW64 /d/PycharmProjects/gitCs231_2018 (master)
+$ git add cs231n/classifiers/
+warning: LF will be replaced by CRLF in cs231n/classifiers/__init__.py.
+The file will have its original line endings in your working directory.
+warning: LF will be replaced by CRLF in cs231n/classifiers/k_nearest_neighbor.py.
+The file will have its original line endings in your working directory.
+
+lenovo@duanzhihua MINGW64 /d/PycharmProjects/gitCs231_2018 (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   cs231n/classifiers/__init__.py
+        new file:   cs231n/classifiers/k_nearest_neighbor.py
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   readme.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        Knn.py
+        cs231n/__pycache__/
+        cs231n/data_utils.py
+
+
+lenovo@duanzhihua MINGW64 /d/PycharmProjects/gitCs231_2018 (master)
+$ git push -u origin master
+Everything up-to-date
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+lenovo@duanzhihua MINGW64 /d/PycharmProjects/gitCs231_2018 (master)
+$ git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        new file:   cs231n/classifiers/__init__.py
+        new file:   cs231n/classifiers/k_nearest_neighbor.py
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   readme.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        Knn.py
+        cs231n/__pycache__/
+        cs231n/data_utils.py
+
+
+lenovo@duanzhihua MINGW64 /d/PycharmProjects/gitCs231_2018 (master)
+$ ^C
+
+lenovo@duanzhihua MINGW64 /d/PycharmProjects/gitCs231_2018 (master)
+$ git commit -m "commit k_nearest_neighbor"
+[master a7e6672] commit k_nearest_neighbor
+ 2 files changed, 183 insertions(+)
+ create mode 100644 cs231n/classifiers/__init__.py
+ create mode 100644 cs231n/classifiers/k_nearest_neighbor.py
+
+lenovo@duanzhihua MINGW64 /d/PycharmProjects/gitCs231_2018 (master)
+$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        modified:   readme.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        Knn.py
+        cs231n/__pycache__/
+        cs231n/data_utils.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+lenovo@duanzhihua MINGW64 /d/PycharmProjects/gitCs231_2018 (master)
+$ git push -u origin master
+Counting objects: 6, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 2.41 KiB | 494.00 KiB/s, done.
+Total 6 (delta 0), reused 0 (delta 0)
+To https://github.com/duanzhihua/cs231n-camp.git
+   8d0dc04..a7e6672  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+lenovo@duanzhihua MINGW64 /d/PycharmProjects/gitCs231_2018 (master)
+$ /d/PycharmProjects/cs231-2018.bak
+================================================================================
+$ git remote -v
+origin  https://github.com/duanzhihua/cs231n-camp.git (fetch)
+origin  https://github.com/duanzhihua/cs231n-camp.git (push)
+
+
+git init
+
+git remote -v
+git clone git@github.com:duanzhihua/cs231n-camp.git
+
+$ git remote -v
+upstream        https://github.com/sharedeeply/cs231n-camp.git (fetch)
+upstream        https://github.com/sharedeeply/cs231n-camp.git (push)
+lenovo@duanzhihua MINGW64 /d/PycharmProjects/gitCs231n-camp-fork-2018 (master)
+$ git remote add upstream https://github.com/sharedeeply/cs231n-camp.git
+
+lenovo@duanzhihua MINGW64 /d/PycharmProjects/gitCs231n-camp-fork-2018 (master)
+$ git remote -v
+upstream        https://github.com/sharedeeply/cs231n-camp.git (fetch)
+upstream        https://github.com/sharedeeply/cs231n-camp.git (push)
+
+lenovo@duanzhihua MINGW64 /d/PycharmProjects/gitCs231n-camp-fork-2018 (master)
+$ git remote add origin https://github.com/duanzhihua/cs231n-camp.git
+
+lenovo@duanzhihua MINGW64 /d/PycharmProjects/gitCs231n-camp-fork-2018 (master)
+$ git remote -v
+origin  https://github.com/duanzhihua/cs231n-camp.git (fetch)
+origin  https://github.com/duanzhihua/cs231n-camp.git (push)
+upstream        https://github.com/sharedeeply/cs231n-camp.git (fetch)
+upstream        https://github.com/sharedeeply/cs231n-camp.git (push)
+
+
+$ git push -u origin master
+To https://github.com/duanzhihua/cs231n-camp.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/duanzhihua/cs231n-camp.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+lenovo@duanzhihua MINGW64 /d/PycharmProjects/gitCs231n-camp-fork-2018 (master)
+$ git pull --rebase origin master
+warning: no common commits
+remote: Enumerating objects: 215, done.
+remote: Counting objects: 100% (215/215), done.
+remote: Compressing objects: 100% (153/153), done.
+remote: Total 215 (delta 68), reused 193 (delta 52), pack-reused 0
+Receiving objects: 100% (215/215), 6.27 MiB | 2.51 MiB/s, done.
+Resolving deltas: 100% (68/68), done.
+From https://github.com/duanzhihua/cs231n-camp
+ * branch            master     -> FETCH_HEAD
+ * [new branch]      master     -> origin/master
+First, rewinding head to replay your work on top of it...
+Applying:  cs231 assignment
+
+lenovo@duanzhihua MINGW64 /d/PycharmProjects/gitCs231n-camp-fork-2018 (master)
+$ git push -u origin master
+Counting objects: 15, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (15/15), done.
+Writing objects: 100% (15/15), 14.72 KiB | 1.84 MiB/s, done.
+Total 15 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/duanzhihua/cs231n-camp.git
+   fb2346c..e3f19f9  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+
+在github网页上做 pull request
