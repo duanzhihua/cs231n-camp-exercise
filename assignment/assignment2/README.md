@@ -28,7 +28,8 @@ You can follow the setup instructions [here](http://cs231n.github.io/setup-instr
 ### Download data:
 Once you have the starter code, you will need to download the CIFAR-10 dataset.
 Run the following from the `assignment2` directory:
-
+ 
+ 
 ```bash
 cd cs231n/datasets
 ./get_datasets.sh
